@@ -18,7 +18,7 @@ public class Main {
                 for(int p = j+1;p<k;p++){
                     if(a[j]>=a[p]&&a[k]>=a[p]){
                         sum++;
-                        /// System.out.println(sum);
+                        // System.out.println(sum);
                     }
                 }
             }
