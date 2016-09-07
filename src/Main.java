@@ -25,6 +25,7 @@ public class Main {
                     data[i][j]=data[i][j-1];
             }
         }
+
         return len-data[len][len];
     }
 }
