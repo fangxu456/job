@@ -1,44 +1,31 @@
 import java.util.Scanner;
 
-/**
- * Created by FangXu on 2016/9/5.
- */
 public class Main {
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int[] a = new int[2*n];
-        for(int i=0; i<n; i++){
-            a[i] = in.nextInt();
-            a[i+n] = a[i];
+        while(in.hasNext()){
+            String s = in.nextLine();
+            System.out.println(getResult(s));
         }
-        int sum = n;
-        for(int j=0;j<n-1;j++){
-            for(int k= j+2; k<n+1+j; k++){
-                for(int p = j+1;p<k;p++){
-                    if(a[j]>=a[p]&&a[k]>=a[p]){
-                        sum++;
-                        //// System.out.println(sum);
-                    }
-                }
-            }
-        }
-        System.out.println(sum);
-        //System.out.println(getValue(n,a));
-        in.close();
     }
-        private static int getValue(int n,int[] a){
-        int sum = n;
-        for(int j=0;j<n-1;j++){
-            for(int k= j+2; k<n-3+j; k++){
-                for(int p = j+1;p<k;p++){
-                    if(a[j]>=a[p]&&a[k]>=a[p]){
-                        sum++;
-                       // System.out.println(sum);
-                    }
-                }
+    public  static int getResult(String s){
+        int len =s.length();
+        String res = new StringBuffer(s).reverse().toString();
+        int[][] data = new int[len+1][len+1];
+        for(int i=0;i<len+1;i++){
+            data[i][0]=data[0][i]=0;
+        }
+        for(int i=1;i<len+1;i++){
+            for(int j=1;j<len+1;j++){
+                if(s.charAt(i-1)==res.charAt(j-1)){
+                    data[i][j]=data[i-1][j-1]+1;
+                }else if(data[i-1][j]>=data[i][j-1]){
+                    data[i][j]=data[i-1][j];
+                }else
+                    data[i][j]=data[i][j-1];
             }
         }
-        return sum;
+
+        return len-data[len][len];
     }
 }
