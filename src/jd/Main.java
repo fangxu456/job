@@ -1,3 +1,5 @@
+package jd;
+
 import java.util.Scanner;
 
 /**
