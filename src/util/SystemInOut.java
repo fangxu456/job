@@ -14,11 +14,11 @@ public class SystemInOut {
         System.out.printf("%s\n",str);*/
 
         //输入多组数据并输出
-        String str1;
+        /*String str1;
         while(sc.hasNextLine()){
             str1 = sc.nextLine();
             System.out.printf("%s\n",str1);
-        }
+        }*/
 
 
 
@@ -50,7 +50,9 @@ public class SystemInOut {
         System.out.printf("输出一个浮点数：%f，一个整数：%d，一个字符串：%s", d, i, s);
         // 可以输出多个变量，注意顺序。
         System.out.println();
-        System.out.printf("字符串：%2$s，%1$d的十六进制数：%1$#x", i, s);
+        System.out.printf("" +
+                "" +
+                "字符串：%2$s，%1$d的十六进制数：%1$#x", i, s);
         // "X$"表示第几个变量。
     }
 }
