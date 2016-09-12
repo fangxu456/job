@@ -1,25 +1,24 @@
 package test;
 
 import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-
-        while(sc.hasNext()) {
-            System.out.println(sc.nextInt());
-            /*int num = sc.nextInt();
-            for(int i=0; i<num; i++) {
-                System.out.println(Fan(sc.nextInt()));
-            }*/
-        }
-
+public class Main{
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int x = in.nextInt();
+        int y = in.nextInt();
+        System.out.println(Rev(x));
+        System.out.println(Rev(y));
+        System.out.println(Rev(Rev(x)+Rev(y)));
     }
-    public static int Fan(int n) {
-        if(n == 1) return 0;
-        if(n == 2) return 1;
-        if(n == 3) return 2;
-        return Fan(n-1)+Fan(n-2);
+    public static int Rev(int n){
+        String str = String.valueOf(n);
+        int count = 0;
+        int m = 1;
+        for(int i = str.length()-1; i>=0; i--){
+            String temp = String.valueOf(str.charAt(i));
+            count+=Integer.parseInt(temp)*m;
+            m*=10;
+        }
+        return count;
     }
 }
