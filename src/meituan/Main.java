@@ -11,11 +11,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        /*HashMap<String, String> hashMap = new HashMap<>();
-        while(in.hasNextLine()){
-            String str = in.nextLine();
-            hashMap.put(str.substring(0,str.indexOf(",")),str);
-        }*/
         int N = in.nextInt();
         int[] a = new int[N];
         //这一步很重要，将光标移到下一行
