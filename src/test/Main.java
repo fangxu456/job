@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        //Main m = new Main();
-        System.out.println("方旭");
+
+
         while(sc.hasNext()) {
-            int num = sc.nextInt();
+            System.out.println(sc.nextInt());
+            /*int num = sc.nextInt();
             for(int i=0; i<num; i++) {
                 System.out.println(Fan(sc.nextInt()));
-            }
+            }*/
         }
 
     }
