@@ -28,6 +28,7 @@ public class Jgch {
                     dp[i][j]=dp[i-1][j-1]+dp[i-1][j+1];
             }
         }
+        //dp[m][1]：经过m步传到第一个人
         System.out.println(dp[m][1]);
     }
 }
