@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Created by YJSYF on 2016/9/13.
- * å›æ–‡å­—ç¬¦ä¸²æœ€å°‘æ¬¡æ•°
+ * »ØÎÄ×Ö·û´®×îÉÙ´ÎÊı
  */
 public class Test3 {
         public static void main(String[] args){

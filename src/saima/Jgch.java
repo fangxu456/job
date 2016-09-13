@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 /**
  * Created by YJSYF on 2016/9/8.
- * å‡»é¼“ä¼ èŠ±
- * åŠ¨æ€è§„åˆ’
+ * »÷¹Ä´«»¨
+ * ¶¯Ì¬¹æ»®
  */
 import java.util.Scanner;
 
@@ -28,7 +28,7 @@ public class Jgch {
                     dp[i][j]=dp[i-1][j-1]+dp[i-1][j+1];
             }
         }
-        //dp[m][1]ï¼šç»è¿‡mæ­¥ä¼ åˆ°ç¬¬ä¸€ä¸ªäºº
+        //dp[m][1]£º¾­¹ım²½´«µ½µÚÒ»¸öÈË
         System.out.println(dp[m][1]);
     }
 }

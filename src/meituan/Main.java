@@ -6,14 +6,14 @@ import java.util.Scanner;
 
 /**
  * Created by YJSYF on 2016/9/11.
- * çº¢åŒ…é—®é¢˜ï¼ŒåŠ¨æ€è§„åˆ’
+ * ºì°üÎÊÌâ£¬¶¯Ì¬¹æ»®
  */
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
         int[] a = new int[N];
-        //è¿™ä¸€æ­¥å¾ˆé‡è¦ï¼Œå°†å…‰æ ‡ç§»åˆ°ä¸‹ä¸€è¡Œ
+        //ÕâÒ»²½ºÜÖØÒª£¬½«¹â±êÒÆµ½ÏÂÒ»ĞĞ
         in.nextLine();
         for(int j = 0; j<N; j++){
             String str = in.nextLine();
@@ -23,9 +23,9 @@ public class Main {
                 temp[i] = Integer.parseInt(numList[i]);
                 //System.out.println(temp[i]);
             }
-            //ç¬¬ä¸€ç±»ï¼Œé€‰å–çº¢åŒ…0ï¼Œç„¶åå¯¹çº¢åŒ…2åˆ°çº¢åŒ…n-2è¿›è¡ŒDP
+            //µÚÒ»Àà£¬Ñ¡È¡ºì°ü0£¬È»ºó¶Ôºì°ü2µ½ºì°ün-2½øĞĞDP
             int ans = temp[0] + Choose(2, temp.length - 2,temp);
-            //ç¬¬äºŒç±»ï¼Œä¸é€‰å–çº¢åŒ…0ï¼Œç„¶åå¯¹çº¢åŒ…1åˆ°çº¢åŒ…n-1è¿›è¡ŒDP
+            //µÚ¶şÀà£¬²»Ñ¡È¡ºì°ü0£¬È»ºó¶Ôºì°ü1µ½ºì°ün-1½øĞĞDP
             ans = Math.max(ans, Choose(1, temp.length - 1,temp));
             a[j]= ans;
         }
@@ -46,16 +46,16 @@ public class Main {
     }
     public static int Choose(int begin, int end, int[] temp){
         if (end < begin) return 0;
-        //dp[0]ï¼›ä¸é€‰å–å½“å‰ä½ç½®çº¢åŒ… dp[1]: é€‰å–å½“å‰ä½ç½®çº¢åŒ…
+        //dp[0]£»²»Ñ¡È¡µ±Ç°Î»ÖÃºì°ü dp[1]: Ñ¡È¡µ±Ç°Î»ÖÃºì°ü
         int[]  dp = new int[2];
         int cache;
         for (int i = begin; i <= end; i++)
         {
-            //ä¿å­˜dp[0]
+            //±£´ædp[0]
             cache = dp[0];
-            //æ›´æ–°dp[0]:ä¸Šä¸€è½®ä¸­çš„æœ€å¤§å€¼
+            //¸üĞÂdp[0]:ÉÏÒ»ÂÖÖĞµÄ×î´óÖµ
             dp[0] = Math.max(dp[0], dp[1]);
-            //æ›´æ–°dp[1]: å½“å‰çº¢åŒ…å€¼+ä¸Šä¸€è½®dp[0]
+            //¸üĞÂdp[1]: µ±Ç°ºì°üÖµ+ÉÏÒ»ÂÖdp[0]
             dp[1] = cache + temp[i];
         }
         return Math.max(dp[0], dp[1]);

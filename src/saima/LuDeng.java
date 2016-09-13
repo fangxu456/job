@@ -34,11 +34,11 @@ public class LuDeng {
 
     public static void sort(int[] a) {
         for (int i = 1; i < a.length; i++) {
-            //å¾…æ’å…¥å…ƒç´ 
+            //´ý²åÈëÔªËØ
             int temp = a[i];
             int j;
             for (j = i - 1; j >= 0; j--) {
-                //å°†å¤§äºŽtempçš„å¾€åŽç§»åŠ¨ä¸€ä½
+                //½«´óÓÚtempµÄÍùºóÒÆ¶¯Ò»Î»
                 if (a[j] > temp) {
                     a[j + 1] = a[j];
                 } else {

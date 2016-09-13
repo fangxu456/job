@@ -4,21 +4,21 @@ import java.util.Scanner;
 
 /**
  * Created by YJSYF on 2016/9/8.
- * åŠ¨æ€è§„åˆ’
+ * ¶¯Ì¬¹æ»®
  */
 public class JunXun {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         JunXun m = new JunXun();
         while(sc.hasNext()) {
-            int num = sc.nextInt();       //è¾“å…¥çš„ç¬¬ä¸€è¡Œæ•°ï¼Œè¡¨ç¤ºä¸‹é¢æœ‰å‡ ç»„æ•°æ®
+            int num = sc.nextInt();       //ÊäÈëµÄµÚÒ»ĞĞÊı£¬±íÊ¾ÏÂÃæÓĞ¼¸×éÊı¾İ
             for(int i=0; i<num; i++) {
                 m.OutPeo(sc.nextInt());
             }
         }
     }
 
-    //è¾“å…¥å‰©ä¸‹äººç¼–å·çš„æ–¹æ³•
+    //ÊäÈëÊ£ÏÂÈË±àºÅµÄ·½·¨
     public void OutPeo(int n)
     {
         int a[]=new int[n];

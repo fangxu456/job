@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 /**
  * Created by YJSYF on 2016/9/12.
- * ç¬¬äºŒé¢˜ï¼Œå»ºæ ‘ï¼Œå±‚æ¬¡æ‰“å°
- * å»ºæ ‘ï¼Ÿï¼Ÿï¼Ÿ
+ * µÚ¶şÌâ£¬½¨Ê÷£¬²ã´Î´òÓ¡
+ * ½¨Ê÷£¿£¿£¿
  */
 public class Demo {
     public static class Tree{

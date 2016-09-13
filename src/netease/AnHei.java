@@ -2,13 +2,13 @@ package netease;
 
 /**
  * Created by YJSYF on 2016/9/12.
- * æš—é»‘å­—ç¬¦ä¸²
+ * °µºÚ×Ö·û´®
  */
 import java.util.Scanner;
 public class AnHei {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        while (in.hasNextInt()) {//æ³¨æ„whileå¤„ç†å¤šä¸ªcase
+        while (in.hasNextInt()) {//×¢Òâwhile´¦Àí¶à¸öcase
             int a = in.nextInt();
             if(a==1){
                 System.out.println(3);
@@ -17,7 +17,7 @@ public class AnHei {
             }
         }
     }
-    // åä¸¤ä¸ªå­—æ¯ç›¸åŒçš„æƒ…å†µ
+    // ºóÁ½¸ö×ÖÄ¸ÏàÍ¬µÄÇé¿ö
     public static long t(int x){
         if(x == 2)
             return 3;

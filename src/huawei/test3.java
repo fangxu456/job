@@ -2,7 +2,7 @@ package huawei;
 
 import java.util.Scanner;
 
-//å›æ–‡
+//»ØÎÄ
 
 public class test3 {
     public static void main(String[] args) {
