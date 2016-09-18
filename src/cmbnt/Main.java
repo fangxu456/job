@@ -1,4 +1,4 @@
-package CMBNT;
+package cmbnt;
 
 /**
  * Created by YJSYF on 2016/9/18.
