@@ -1,4 +1,4 @@
-package test;
+package cvte;
 
 
 import java.util.Stack;
@@ -7,7 +7,8 @@ public class Main {
     public static void main(String[] args) {
 
         String str="(((520+480)*38/10)/2*((520+480)*38/10)/2)";
-        boolean bool=isMatch(str);
+        String str1="(gjklj{gfsajgl(fdsgjgjlj}a)g)";
+        boolean bool=isMatch(str1);
         System.out.println(bool);
 
     }
@@ -43,7 +44,4 @@ public class Main {
                 return false;
             }
         }
-
-
-
 }

@@ -1,4 +1,4 @@
-/**
+package didi; /**
  * Created by FangXu on 2016/9/18.
  */
 import java.util.Scanner;
