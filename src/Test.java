@@ -1,6 +1,7 @@
+
 import java.util.*;
 
-public class FirstRepeat {
+class FirstRepeat {
     public char findFirstRepeat(String A, int n) {
         List<Character> hm= new ArrayList<Character>();
         char[] c = A.toCharArray();
