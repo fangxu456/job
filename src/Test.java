@@ -18,3 +18,6 @@ class FirstRepeat {
 
     }
 }
+public class Test{
+
+}
