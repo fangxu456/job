@@ -238,6 +238,35 @@ public class Ctci {
         return list;
     }
 
+    //9.5
+    public ArrayList<String> getPermutation(String A) {
+        // write code here
+        ArrayList<String> list = new ArrayList<>();
+        char[] array = A.toCharArray();
+        permutation(list, array, 0);
+        Collections.sort(list);
+        Collections.reverse(list);
+        return list;
+    }
+    public void permutation(ArrayList<String> list, char[] array, int k) {
+        if(k == array.length) {
+            list.add(new String(array));
+            return ;
+        }
+        for(int i = k; i < array.length; i++) {
+            swap(array, i, k);
+            permutation(list, array, k + 1);
+            swap(array, i, k);
+        }
+    }
+    public void swap(char[] array, int i, int j) {
+        if(i != j) {
+            char temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+
 
 }
 
