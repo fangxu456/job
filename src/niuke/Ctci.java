@@ -267,6 +267,66 @@ public class Ctci {
         }
     }
 
+    @Test
+    public void test2(){
+//        System.out.println(countWays(10));
+        System.out.println(getResult(5,3));
+
+    }
+
+    //9.8
+    public int countWays(int n) {
+        int[] a = {1, 5, 10, 25};
+        int[][] dp = new int[5][n + 1];
+        for (int j = 0; j <= n; j++)
+        {
+            if (j == 0)
+                dp[0][j] = 1;
+            else
+            {
+                dp[0][j] = 0;
+            }
+
+        }
+        for (int j = 1; j <= 4; j++)
+        {
+            dp[j][0] = 1;
+        }
+        for (int i = 1; i <= 4; i++)
+        {
+            for (int j = 1; j <= n; j++)
+            {
+                if (j >= a[i - 1])
+                    dp[i][j] = (dp[i - 1][j] % 1000000007 + dp[i][j - a[i - 1]] % 1000000007) % 1000000007;
+                else
+                    dp[i][j] = dp[i - 1][j];
+            }
+        }
+
+        return dp[4][n];
+    }
+
+    //
+    public int getResult(int n, int m) {
+        // write code here
+        int last = 0;
+        for(int i=2;i<=n;++i){
+            last = (last+m)%i;
+        }
+        return (last+1);
+    }
+
+    //17.1
+    public int[] exchangeAB(int[] AB) {
+        // write code here
+        AB[0]=AB[0]+AB[1];
+        AB[1]=AB[0]-AB[1];
+        AB[0]=AB[0]-AB[1];
+        return AB;
+    }
+
+
+
 
 }
 
