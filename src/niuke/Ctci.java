@@ -248,19 +248,21 @@ public class Ctci {
         Collections.reverse(list);
         return list;
     }
+
     public void permutation(ArrayList<String> list, char[] array, int k) {
-        if(k == array.length) {
+        if (k == array.length) {
             list.add(new String(array));
-            return ;
+            return;
         }
-        for(int i = k; i < array.length; i++) {
+        for (int i = k; i < array.length; i++) {
             swap(array, i, k);
             permutation(list, array, k + 1);
             swap(array, i, k);
         }
     }
+
     public void swap(char[] array, int i, int j) {
-        if(i != j) {
+        if (i != j) {
             char temp = array[i];
             array[i] = array[j];
             array[j] = temp;
@@ -268,9 +270,9 @@ public class Ctci {
     }
 
     @Test
-    public void test2(){
+    public void test2() {
 //        System.out.println(countWays(10));
-        System.out.println(getResult(5,3));
+        System.out.println(getResult(5, 3));
 
     }
 
@@ -278,24 +280,19 @@ public class Ctci {
     public int countWays(int n) {
         int[] a = {1, 5, 10, 25};
         int[][] dp = new int[5][n + 1];
-        for (int j = 0; j <= n; j++)
-        {
+        for (int j = 0; j <= n; j++) {
             if (j == 0)
                 dp[0][j] = 1;
-            else
-            {
+            else {
                 dp[0][j] = 0;
             }
 
         }
-        for (int j = 1; j <= 4; j++)
-        {
+        for (int j = 1; j <= 4; j++) {
             dp[j][0] = 1;
         }
-        for (int i = 1; i <= 4; i++)
-        {
-            for (int j = 1; j <= n; j++)
-            {
+        for (int i = 1; i <= 4; i++) {
+            for (int j = 1; j <= n; j++) {
                 if (j >= a[i - 1])
                     dp[i][j] = (dp[i - 1][j] % 1000000007 + dp[i][j - a[i - 1]] % 1000000007) % 1000000007;
                 else
@@ -310,21 +307,123 @@ public class Ctci {
     public int getResult(int n, int m) {
         // write code here
         int last = 0;
-        for(int i=2;i<=n;++i){
-            last = (last+m)%i;
+        for (int i = 2; i <= n; ++i) {
+            last = (last + m) % i;
         }
-        return (last+1);
+        return (last + 1);
     }
 
     //17.1
     public int[] exchangeAB(int[] AB) {
         // write code here
-        AB[0]=AB[0]+AB[1];
-        AB[1]=AB[0]-AB[1];
-        AB[0]=AB[0]-AB[1];
+        AB[0] = AB[0] + AB[1];
+        AB[1] = AB[0] - AB[1];
+        AB[0] = AB[0] - AB[1];
         return AB;
     }
 
+    //17.13
+    private ListNode head = new ListNode(-1);
+    private ListNode p = head;
+
+    public ListNode treeToList(TreeNode root) {
+        // write code here
+        if (root != null) {
+            p.next = new ListNode(root.val);
+            p = p.next;
+
+            treeToList(root.left);
+
+            treeToList(root.right);
+        }
+        return head.next;
+
+    }
+
+    //18.9
+    public int[] getMiddle(int[] A, int n) {
+        // write code here
+        int[] B = new int[n];
+        List list = new ArrayList();
+        for (int i = 0; i < n; i++) {
+            list.add(A[i]);
+            Collections.sort(list);
+            B[i] = (int) list.get(i / 2);
+        }
+        return B;
+    }
+
+    //18.11
+    /**
+     * 使用动态规划
+     * left[i][j]: 坐标[i,j]的左边有连续相同的数个数，包含自己
+     * above[i][j]: 坐标[i,j]的上边有连续相同的数个数，包含自己
+     * 初始值：left[i][j]=1; above[i][j]=1
+     * 递推式：
+     * left[i][j]=left[i][j-1]+1,      mat[i][j]==mat[i][j-1];
+     * left[i][j]=1,                   mat[i][j]!=mat[i][j-1];
+     * above[i][j]=above[i-1][j]+1,    mat[i][j]==mat[i-1][j];
+     * above[i][j]=1,                  mat[i][j]!=mat[i-1][j];
+     * 在递推的过程中求解： mat[i][j]==mat[i][j-1]&&mat[i][j]==mat[i-1][j]
+     *
+     * @param mat
+     * @param n
+     * @return
+     */
+    public int maxSubMatrix(int[][] mat, int n) {
+        int max = 1;
+        int[][] left = new int[n][n];
+        int[][] above = new int[n][n];
+        initial(mat, n, left, above);
+        for (int i = 1; i < n; i++) {
+            for (int j = 1; j < n; j++) {
+                if (mat[i - 1][j] != mat[i][j] || mat[i][j - 1] != mat[i][j]) {
+                    if (mat[i - 1][j] != mat[i][j]
+                            && mat[i][j - 1] != mat[i][j]) {
+                        left[i][j] = 1;
+                        above[i][j] = 1;
+                    } else if (mat[i][j - 1] != mat[i][j]) {
+                        left[i][j] = 1;
+                        above[i][j] = above[i - 1][j] + 1;
+                    } else {
+                        above[i][j] = 1;
+                        left[i][j] = left[i][j - 1] + 1;
+                    }
+                } else {
+                    left[i][j] = left[i][j - 1] + 1;
+                    above[i][j] = above[i - 1][j] + 1;
+                    int min = Math.min(left[i][j - 1], above[i - 1][j]);
+                    for (int k = min; k > 0 && min >= max; k--) {//此处求解结果
+                        if (above[i][j - min] >= (min + 1)
+                                && left[i - min][j] >= (min + 1)) {
+                            max = Math.max(max, min + 1);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return max;
+    }
+    public void initial(int[][] mat, int n, int[][] left, int[][] above) {
+        left[0][0] = 1;
+        Arrays.fill(above[0], 1);
+        for (int i = 1; i < n; i++) {
+            left[i][0] = 1;
+            if (mat[0][i] != mat[0][i - 1]) {
+                left[0][i] = 1;
+            } else {
+                left[0][i] = left[0][i - 1] + 1;
+            }
+        }
+        for (int i = 1; i < n; i++) {
+            if (mat[i][0] != mat[i - 1][0]) {
+                above[i][0] = 1;
+            } else {
+                above[i][0] = above[i - 1][0] + 1;
+            }
+        }
+    }
 
 
 
